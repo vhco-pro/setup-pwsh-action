@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "automerge": false,
+  "customManagers": [
+    {
+      // The PowerShell release the action installs. Renovate bumps the version only;
+      // the same PR must refresh every checksum from the release's hashes.sha256.
+      "customType": "regex",
+      "managerFilePatterns": ["/^pwsh\\.pins$/"],
+      "matchStrings": ["version=(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "depNameTemplate": "PowerShell/PowerShell",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$"
+    }
+  ]
+}
