@@ -47,6 +47,7 @@ if ! run_install "$PINS" > "$RUNNER/log" 2>&1; then
   fail 'pinned install failed'
 else
   dir=$(head -n 1 "$RUNNER/path")
+  # shellcheck disable=SC2016 # $PSVersionTable is PowerShell's, not the shell's.
   reported=$("$dir/pwsh" -NoProfile -Command '$PSVersionTable.PSVersion.ToString()')
   if [ "$reported" != "$pinned_version" ]; then
     fail "pwsh reports $reported, pin is $pinned_version"

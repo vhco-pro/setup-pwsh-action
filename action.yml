@@ -1,0 +1,19 @@
+name: Set up PowerShell
+description: Install a pinned, checksum-verified PowerShell release and put it first on PATH
+
+outputs:
+  version:
+    description: The PowerShell version this action installed
+    value: ${{ steps.install.outputs.version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install the pinned PowerShell
+      id: install
+      shell: bash
+      run: bash "$GITHUB_ACTION_PATH/scripts/install.sh"
+
+branding:
+  icon: terminal
+  color: blue
