@@ -44,10 +44,12 @@ url="https://github.com/PowerShell/PowerShell/releases/download/v$version/$archi
 download="$RUNNER_TEMP/$archive"
 curl --fail --silent --show-error --location --retry 3 --output "$download" "$url"
 
+# Hash from standard input: on Windows, sha256sum escapes a path that contains
+# backslashes by prefixing its output with "\".
 if command -v sha256sum > /dev/null; then
-  actual=$(sha256sum "$download" | cut -d' ' -f1)
+  actual=$(sha256sum < "$download" | cut -d' ' -f1)
 else
-  actual=$(shasum -a 256 "$download" | cut -d' ' -f1)
+  actual=$(shasum -a 256 < "$download" | cut -d' ' -f1)
 fi
 if [ "$actual" != "$expected" ]; then
   rm -f "$download"
