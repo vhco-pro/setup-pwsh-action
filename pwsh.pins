@@ -1,0 +1,9 @@
+# PowerShell release this action installs. Renovate updates the version; refresh every
+# checksum in the same change from the release's hashes.sha256 asset.
+version=7.7.0
+linux-x64=c89d9c682d2c403dfe726f3df948e359675235a5bd6fab535776de69729ca0cb
+linux-arm64=e59c89776eaa59790d44b3edd14277435225ab08b6e7603763101b89de83d935
+osx-x64=61906bf8f407ef5cc263874c904c551d69fbb61d42dbd8f848a461ec47bf68b5
+osx-arm64=76449f078f30193fce9cdf6610b77fda14f4224cafcbdf230245ec0dab9ef10d
+win-x64=7c74e03b20a75b59715847439d046a6214b1863ee79b187872980f139bb4a05f
+win-arm64=5dc7440cd98f0ba786a44d7db9205df5058474fd4db143caf7171e8375f34f75
